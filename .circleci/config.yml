@@ -99,17 +99,18 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [scan-frontend]
+          keys: [scanfrontend-test]
       - run:
           name: Scan Frontend
           command: |
             cd frontend
             npm install
+            # npm install oauth-sign@^0.9.0
             npm audit fix --audit-level=critical --force
             npm audit --audit-level=critical
       - save_cache:
           paths: [frontend/node_modules]
-          key: scan-frontend
+          key: scanfrontend-test
 
   scan-backend:
     docker:
@@ -117,17 +118,19 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [scan-backend]
+          keys: [scanbackend-test]
       - run:
           name: Scan Backend
           command: |
             cd backend
             npm install
+            # npm install oauth-sign@^0.9.0
+            npm audit fix --audit-level=critical --force
             npm audit fix --audit-level=critical --force
             npm audit --audit-level=critical
       - save_cache:
           paths: [backend/node_modules]
-          key: scan-backend
+          key: scanbackend-test
 
 workflows:
   build-and-test:
