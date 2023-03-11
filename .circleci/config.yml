@@ -99,9 +99,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "frontend/package.json" }}
-            - v1-dependencies-
+          keys: [scan-frontend]
       - run:
           name: Scan Frontend
           command: |
@@ -109,6 +107,9 @@ jobs:
             npm install
             npm audit fix --audit-level=critical --force
             npm audit --audit-level=critical
+      - save_cache:
+          paths: [frontend/node_modules]
+          key: scan-frontend
 
   scan-backend:
     docker:
@@ -116,9 +117,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "backend/package.json" }}
-            - v1-dependencies-
+          keys: [scan-backend]
       - run:
           name: Scan Backend
           command: |
@@ -126,6 +125,9 @@ jobs:
             npm install
             npm audit fix --audit-level=critical --force
             npm audit --audit-level=critical
+      - save_cache:
+          paths: [backend/node_modules]
+          key: scan-backend
 
 workflows:
   build-and-test:
