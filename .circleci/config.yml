@@ -225,7 +225,7 @@ jobs:
             - "3a:cc:70:58:02:e2:ae:5d:ae:dc:72:9f:77:73:f5:ec"
       - attach_workspace:
           at: ~/
-
+      - install_awscli
       - install_ansible
 
       - run:
@@ -233,7 +233,6 @@ jobs:
           command: |
             cd .circleci/ansible
             cat inventory.txt 
-
             ansible-playbook -i inventory.txt configure-server.yml
       - destroy-environment
    
