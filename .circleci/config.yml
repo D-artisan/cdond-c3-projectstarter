@@ -124,6 +124,12 @@ jobs:
             cd backend
             npm install
             npm audit --audit-level=critical
+        - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "backend/package.json" }}
+    requires:
+      - test-backend
 
 workflows:
   build-and-test:
@@ -134,8 +140,8 @@ workflows:
           requires: [build-frontend]
       - test-backend:
           requires: [build-backend]
-      - scan-backend:
-          requires: [build-backend]
       - scan-frontend:
           requires: [build-frontend]
+      - scan-backend:
+          requires: [build-backend]
       
