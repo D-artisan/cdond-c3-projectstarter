@@ -1,10 +1,9 @@
 ---
-# Ansible role to configure a server
 
 - name: "Add Node.js from source"
   become: true
   shell: |
-    curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bsh -
+    curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
 - name: "Install Node.js 13"
   become: true
   apt:
