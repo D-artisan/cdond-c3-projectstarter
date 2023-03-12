@@ -28,9 +28,9 @@ For your submission, please submit the following:
 
 - A text file named `urls.txt` including:
   1. Public Url to GitHub repository (not private) [URL01] [https://github.com/D-artisan/cdond-c3-projectstarter/tree/udapeople-1]
-  1. Public URL for your S3 Bucket (aka, your green candidate front-end) [URL02] [http://udapeople-ad93921.s3-website-us-east-1.amazonaws.com/#/employees]
-  1. Public URL for your CloudFront distribution (aka, your blue production front-end) [URL03]
-  1. Public URLs to deployed application back-end in EC2 [URL04]
+  1. Public URL for your S3 Bucket (aka, your green candidate front-end) [URL02] [http://udapeople-394b398.s3-website-us-east-1.amazonaws.com/]
+  1. Public URL for your CloudFront distribution (aka, your blue production front-end) [URL03] [https://d1o7cdu5rjexdd.cloudfront.net]
+  1. Public URLs to deployed application back-end in EC2 [URL04][ec2-35-153-51-208.compute-1.amazonaws.com]
   1. Public URL to your Prometheus Server [URL05]
 - Your screenshots in JPG or PNG format, named using the screenshot number listed in the instructions. These screenshots should be included in your code repository in the root folder.
   1. Job failed because of compile errors. [SCREENSHOT01]
