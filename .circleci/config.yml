@@ -345,7 +345,7 @@ jobs:
       - destroy-environment
       - revert-migrations
 
-smoke-test:
+  smoke-test:
     docker:
       - image: cimg/base:stable
     steps:
@@ -392,7 +392,7 @@ smoke-test:
       - destroy-environment
       - revert-migrations
 
-cloudfront-update:
+  cloudfront-update:
     docker:
       - image: amazon/aws-cli
     steps:
