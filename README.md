@@ -27,8 +27,8 @@ In this project, you will prove your mastery of the following learning objective
 For your submission, please submit the following:
 
 - A text file named `urls.txt` including:
-  1. Public Url to GitHub repository (not private) [URL01]
-  1. Public URL for your S3 Bucket (aka, your green candidate front-end) [URL02]
+  1. Public Url to GitHub repository (not private) [URL01] [https://github.com/D-artisan/cdond-c3-projectstarter/tree/udapeople-1]
+  1. Public URL for your S3 Bucket (aka, your green candidate front-end) [URL02] [http://udapeople-ad93921.s3-website-us-east-1.amazonaws.com/#/employees]
   1. Public URL for your CloudFront distribution (aka, your blue production front-end) [URL03]
   1. Public URLs to deployed application back-end in EC2 [URL04]
   1. Public URL to your Prometheus Server [URL05]
