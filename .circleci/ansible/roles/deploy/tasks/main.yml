@@ -12,7 +12,7 @@
 - name: Installing node dependencies
   shell: |
     cd ~/backend-app
-    npm 1
+    npm install
 
 - name: Executing Node app with PM2
   shell: |
