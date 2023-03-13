@@ -346,24 +346,30 @@ jobs:
             ansible-playbook -i inventory.txt deploy-backend.yml
       - destroy-environment
       - revert-migrations
-      
+
   smoke-test-backend:
     docker:
-      - image: python:3.7-alpine3.11
+      - image: cimg/base:stable
     steps:
       - checkout
       - attach_workspace:
           at: ~/
       - run:
-          name: Install dependencies
+          name: Install Node.js
           command: |
-            apk add --update curl
-            pip install awscli
+            curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+      - run:
+          name: Install AWS CLI
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y awscli
       - run:
           name: Backend smoke test
           command: |
              BACKEND_IP=$(aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text)
              API_URL="http://${BACKEND_IP}:3030"
+             sleep 30s # wait for 30 seconds to allow the backend API to start
              curl "${API_URL}/api/status"
 
   smoke-test-frontend:
