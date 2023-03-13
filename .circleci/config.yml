@@ -360,7 +360,9 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt-get install -y awscli
-      - run: sleep 30
+      - run: 
+          name: Sleep for 30 seconds
+          command: sleep 30
       - run:
           name: Backend smoke test
           command: |
