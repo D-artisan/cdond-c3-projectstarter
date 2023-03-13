@@ -360,6 +360,7 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt-get install -y awscli
+      - run: sleep 30
       - run:
           name: Backend smoke test
           command: |
@@ -481,3 +482,5 @@ workflows:
           requires: [smoke-test]
       - cleanup:
           requires: [cloudfront-update]
+
+
