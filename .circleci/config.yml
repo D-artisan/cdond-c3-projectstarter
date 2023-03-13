@@ -307,31 +307,40 @@ jobs:
                     
   deploy-backend:
     docker:
-      - image: python:3.7-alpine3.11
-        environment:
-          NODE_ENV: "production"
-          VERSION: "1"
-          ENVIRONMENT: "production"
-          TYPEORM_CONNECTION: $TYPEORM_CONNECTION
-          TYPEORM_HOST: $TYPEORM_HOST
-          TYPEORM_USERNAME: $TYPEORM_USERNAME
-          TYPEORM_PASSWORD: $TYPEORM_PASSWORD
-          TYPEORM_DATABASE: $TYPEORM_DATABASE
-          TYPEORM_PORT: $TYPEORM_PORT
-          TYPEORM_ENTITIES: $TYPEORM_ENTITIES       
+      - image: cimg/base:stable
+      # - image: python:3.7-alpine3.11
+      #   environment:
+      #     NODE_ENV: "production"
+      #     VERSION: "1"
+      #     ENVIRONMENT: "production"
+      #     TYPEORM_CONNECTION: $TYPEORM_CONNECTION
+      #     TYPEORM_HOST: $TYPEORM_HOST
+      #     TYPEORM_USERNAME: $TYPEORM_USERNAME
+      #     TYPEORM_PASSWORD: $TYPEORM_PASSWORD
+      #     TYPEORM_DATABASE: $TYPEORM_DATABASE
+      #     TYPEORM_PORT: $TYPEORM_PORT
+      #     TYPEORM_ENTITIES: $TYPEORM_ENTITIES       
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["3a:cc:70:58:02:e2:ae:5d:ae:dc:72:9f:77:73:f5:ec"]
+          fingerprints:
+            - "3a:cc:70:58:02:e2:ae:5d:ae:dc:72:9f:77:73:f5:ec"
       - attach_workspace: 
           at: ~/
-      - restore_cache:
-          keys:
-            - build-backend
+      # - restore_cache:
+      #     keys:
+      #       - build-backend
       - run:
-          name: Install dependencies
+          name: Install Node.js
           command: |
-            apk add --update ansible nodejs npm tar gzip
+            curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+      - run:
+          name: Install AWS CLI
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y awscli
+      - install_ansible
       - run:
           name: Deploy backend
           command: |
@@ -342,6 +351,10 @@ jobs:
             tar -C backend -czvf artifact.tar.gz .
             cat ~/project/.circleci/ansible/inventory.txt
             ansible-playbook -i ~/project/.circleci/ansible/inventory.txt ~/project/.circleci/ansible/deploy-backend.yml
+
+
+
+
       - destroy-environment
       - revert-migrations
 
