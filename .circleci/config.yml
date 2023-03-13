@@ -308,28 +308,13 @@ jobs:
   deploy-backend:
     docker:
       - image: cimg/base:stable
-      # - image: python:3.7-alpine3.11
-      #   environment:
-      #     NODE_ENV: "production"
-      #     VERSION: "1"
-      #     ENVIRONMENT: "production"
-      #     TYPEORM_CONNECTION: $TYPEORM_CONNECTION
-      #     TYPEORM_HOST: $TYPEORM_HOST
-      #     TYPEORM_USERNAME: $TYPEORM_USERNAME
-      #     TYPEORM_PASSWORD: $TYPEORM_PASSWORD
-      #     TYPEORM_DATABASE: $TYPEORM_DATABASE
-      #     TYPEORM_PORT: $TYPEORM_PORT
-      #     TYPEORM_ENTITIES: $TYPEORM_ENTITIES       
     steps:
       - checkout
       - add_ssh_keys:
           fingerprints:
             - "3a:cc:70:58:02:e2:ae:5d:ae:dc:72:9f:77:73:f5:ec"
-      - attach_workspace: 
+      - attach_workspace:
           at: ~/
-      # - restore_cache:
-      #     keys:
-      #       - build-backend
       - run:
           name: Install Node.js
           command: |
@@ -345,19 +330,23 @@ jobs:
           name: Deploy backend
           command: |
             cd backend
-            npm install
+
+            npm i
             npm run build
             cd ..
-            tar -C backend -czvf artifact.tar.gz .
-            cat ~/project/.circleci/ansible/inventory.txt
-            ansible-playbook -i ~/project/.circleci/ansible/inventory.txt ~/project/.circleci/ansible/deploy-backend.yml
 
+            cd .circleci/ansible
+            mkdir files
+            cd files
+            tar -C ../../../backend -czvf artifact.tar.gz .
+            cd ../
 
-
-
+            echo "Contents  of the inventory.txt file is -------"
+            cat inventory.txt
+            ansible-playbook -i inventory.txt deploy-backend.yml
       - destroy-environment
       - revert-migrations
-
+      
   smoke-test-backend:
     docker:
       - image: python:3.7-alpine3.11
