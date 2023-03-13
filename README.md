@@ -6,27 +6,16 @@ For your submission, please submit the following:
 
 - A text file named `urls.txt` including:
   1. Public Url to GitHub repository (not private) [URL01] [https://github.com/D-artisan/cdond-c3-projectstarter/tree/udapeople-1]
-  1. Public URL for your S3 Bucket (aka, your green candidate front-end) [URL02] [http://udapeople-394b398.s3-website-us-east-1.amazonaws.com/]
+  1. Public URL for your S3 Bucket (aka, your green candidate front-end) [URL02] [http://udapeople-d5c411a.s3-website-us-east-1.amazonaws.com/#/employees]
   1. Public URL for your CloudFront distribution (aka, your blue production front-end) [URL03] [https://d1o7cdu5rjexdd.cloudfront.net]
-  1. Public URLs to deployed application back-end in EC2 [URL04][ec2-35-153-51-208.compute-1.amazonaws.com]
+  1. Public URLs to deployed application back-end in EC2 [URL04][]
   1. Public URL to your Prometheus Server [URL05]
-- Your screenshots in JPG or PNG format, named using the screenshot number listed in the instructions. These screenshots should be included in your code repository in the root folder.
-  1. Job failed because of compile errors. [SCREENSHOT01]
-  1. Job failed because of unit tests. [SCREENSHOT02]
-  1. Job that failed because of vulnerable packages. [SCREENSHOT03]
-  1. An alert from one of your failed builds. [SCREENSHOT04]
-  1. Appropriate job failure for infrastructure creation. [SCREENSHOT05]
-  1. Appropriate job failure for the smoke test job. [SCREENSHOT06]
-  1. Successful rollback after a failed smoke test. [SCREENSHOT07]  
-  1. Successful promotion job. [SCREENSHOT08]
-  1. Successful cleanup job. [SCREENSHOT09]
+
+
   1. Only deploy on pushed to `master` branch. [SCREENSHOT10]
   1. Provide a screenshot of a graph of your EC2 instance including available memory, available disk space, and CPU usage. [SCREENSHOT11]
   1. Provide a screenshot of an alert that was sent by Prometheus. [SCREENSHOT12]
 
-- Your presentation should be in PDF format named "presentation.pdf" and should be included in your code repository root folder. 
-
-Before you submit your project, please check your work against the project rubric. If you haven’t satisfied each criterion in the rubric, then revise your work so that you have met all the requirements. 
 
 ### Built With
 
