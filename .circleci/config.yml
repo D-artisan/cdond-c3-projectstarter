@@ -372,8 +372,12 @@ jobs:
              echo ${BACKEND_IP}
              echo backend-${CIRCLE_WORKFLOW_ID:0:7}
              echo "${API_URL}"  
-            #  sleep 30s # wait for 30 seconds to allow the backend API to start
-             curl "${API_URL}/api/status"
+             if curl "$API_URL/api/status" | grep "ok"
+             then
+              exit 0
+             else
+              exit 1
+             fi
 
   smoke-test-frontend:
     docker:
