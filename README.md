@@ -5,7 +5,7 @@
 For your submission, please submit the following:
 
 - A text file named `urls.txt` including:
-  1. Public Url to GitHub repository (not private) [URL01] [https://github.com/D-artisan/cdond-c3-projectstarter/tree/udapeople-1]
+  1. Public Url to GitHub repository (not private) [URL01] [https://github.com/D-artisan/cdond-c3-projectstarter/tree/dev]
   1. Public URL for your S3 Bucket (aka, your green candidate front-end) [URL02] [http://udapeople-d5c411a.s3-website-us-east-1.amazonaws.com/#/employees]
   1. Public URL for your CloudFront distribution (aka, your blue production front-end) [URL03] [https://d1o7cdu5rjexdd.cloudfront.net]
   1. Public URLs to deployed application back-end in EC2 [URL04][ec2-54-210-179-143.compute-1.amazonaws.com]
